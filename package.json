@@ -1,0 +1,10 @@
+{
+  "name": "vizkite",
+  "version": "0.0.1",
+  "description": "Visualization package leveraging React and D3.",
+  "main": "index.js",
+  "repository": "git@github.com:hypercodex/vizkite.git",
+  "author": "hypercodex <hypercodex@protonmail.com>",
+  "license": "MIT",
+  "private": true
+}
