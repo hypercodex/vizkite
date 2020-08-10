@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2015",
+    "declaration": true,
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "jsx": "react"
+  },
+  "exclude": [
+    "./node_modules/react",
+    "./node_modules/react-dom"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src.**/*.tsx"
+  ]
+}
