@@ -25,28 +25,6 @@ export const useD3 = (d3Callback: D3CallbackType, data: number[]) => {
 }
 
 
-/* export const useD3Callback = (d3Callback: D3CallbackType, data: number[]) => { */
-  
-/*   const ref = useRef<SVGSVGElement>(null); */
-/*   const setRef = useCallback(node => { */
-/*     if (ref.current) { */
-
-/*     } */
-
-/*     if (node) { */
-/*       if (data) { */
-/*         d3Callback(ref.current, data); */
-/*       } */
-/*     } */
-
-
-/*     ref.current = node */
-/*   }, []); */
-  
-/*   return setRef; */
-/* } */
-
-
 export interface InterfaceD3SvgTarget {
   width: number;
   height: number;
@@ -67,9 +45,10 @@ export const D3SvgTarget = (props) => (
 
 
 export const D3SvgTargetWrapper = (props) => {
-  const { d3Callback, data } = props;
 
+  const { d3Callback, data } = props;
   const forwardRef = useD3(d3Callback, data);
+
   return (
       <D3SvgTarget {...{...props, forwardRef: forwardRef}} /> 
   );
