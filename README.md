@@ -74,7 +74,8 @@ ReactDOM.render(<Viz data={[1, 2, 3, 4]} />, document.getElementById('root'));
 ```
 
 #### Renders: 
-[[https://github.com/hypercodex/vizkite/blob/master/img/vizkite_example.png|alt=example_output]] 
+![Example output]
+(https://github.com/hypercodex/vizkite/blob/master/img/vizkite_example.png)
 
 Pretty sweet!
 //
