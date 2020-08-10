@@ -13,13 +13,16 @@ This package uses a combination of useRef and useEffect and a HOC for a componen
 ### Examples
 This module exports a React component `D3Svg` that will render a `<svg ...>` that is rendered via the callback prop `d3Callback` and a `data` that is the available to the callback as an argument. 
 The callback has the following signature:
-```export interface D3CallbackType {
+```
+export interface D3CallbackType {
   (ref: SVGSVGElement, data: number[]): void;
-}```
+}
+```
 
 #### An example using a simple D3 callback:
 
 The callback takes two parameters, being a reference to the dom element targeted for manipulation and data to update the DOM with. 
+
 ```
 const d3Callback = (ref: SVGElement, data: number[]): void => {
   const svg = d3.select(ref);
