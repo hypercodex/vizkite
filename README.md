@@ -77,15 +77,16 @@ ReactDOM.render(<Viz data={[1, 2, 3, 4]} />, document.getElementById('root'));
 ![Example output](https://github.com/hypercodex/vizkite/blob/master/img/vizkite_example.png)
 
 Pretty sweet!
-//
 
 
-### Issues
+
+
+## Issues
 If you find a bug or want to an enhancement please open a PR.
 
 :)
 
 
-### LICENSE
+## LICENSE
 MIT
 
