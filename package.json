@@ -1,7 +1,7 @@
 {
   "name": "@hypercodex/vizkite",
   "version": "0.0.1",
-  "description": "Visualization package leveraging React to run DOM manipulation side-effects such as D3.",
+  "description": "Visualization package leveraging React Hooks to run DOM manipulation side-effects such as D3.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": ["**/vizkite.*"],
