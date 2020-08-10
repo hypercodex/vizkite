@@ -2,7 +2,7 @@ import * as React from 'react'
 import { renderHook } from "@testing-library/react-hooks";
 import { act } from "react-dom/test-utils";
 import { shallow, mount } from 'enzyme';
-import { useD3, D3SvgTarget, D3SvgTargetWrapper } from '../index';
+import { useD3, D3SvgTarget, D3Svg } from '../index';
 
 
 
@@ -30,7 +30,7 @@ describe("Test units of custom hook", () => {
         ref.appendChild(childNode);
       }
     };
-    const svg = mount(<D3SvgTargetWrapper width={100} height={50} className='test' d3Callback={d3Callback} data={[1, 2, 3]}/>);
+    const svg = mount(<D3Svg width={100} height={50} className='test' d3Callback={d3Callback} data={[1, 2, 3]}/>);
     expect(svg.html()).toContain('circle')
   });
 

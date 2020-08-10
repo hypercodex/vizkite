@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useCallback } from 'react'
+import React, { useRef, useEffect } from 'react'
 
 
 
@@ -44,7 +44,7 @@ export const D3SvgTarget = (props) => (
 );
 
 
-export const D3SvgTargetWrapper = (props) => {
+export const D3Svg = (props) => {
 
   const { d3Callback, data } = props;
   const forwardRef = useD3(d3Callback, data);
