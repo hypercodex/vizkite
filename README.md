@@ -73,7 +73,7 @@ const Viz = (props: VizProps): JSX.Element  =>
 ReactDOM.render(<Viz data={[1, 2, 3, 4]} />, document.getElementById('root'));
 ```
 
-Renders: 
+#### Renders: 
 
 
 ### Issues
