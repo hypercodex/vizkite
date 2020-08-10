@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/hypercodex/vizkite#readme",
   "scripts": {
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "publishLocal":"yarn tsc && yalc publish --push --files"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.2",
