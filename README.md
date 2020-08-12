@@ -69,7 +69,10 @@ const Viz = ({d3Callback, data}) =>
 
 ...
 
-ReactDOM.render(<Viz d3Callback={d3Callback} data={[1, 2, 3, 4]} />, document.getElementById('root'));
+ReactDOM.render(
+  <Viz d3Callback={d3Callback} data={[1, 2, 3, 4]} />,
+  document.getElementById('root')
+);
 ```
 
 #### Renders: 
