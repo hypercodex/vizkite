@@ -11,20 +11,22 @@ This package uses a combination of useRef and useEffect closed on by a HOC for a
 `yarn add "@hypercodex/vizkite"`
 
 ### Examples
-This module exports a React component `D3Svg` that will render a `<svg ...>` that is rendered via the callback prop `d3Callback` and a `data` that is the available to the callback as an argument. 
+This module exports a React component `D3Svg` that will render a `<svg ... />` that is rendered via the callback prop `d3Callback` and a `data` that is the available to the callback as an argument. 
 The callback has the following signature:
+
 ```typescript
 export interface D3CallbackType {
-  (ref: SVGSVGElement, data: number[]): void;
+  (ref: React.MutableRefObject<SVGSVGElement>, data: any[]): void;
 }
 ```
 
 #### An example using a simple D3 callback:
 
-The callback takes two parameters, being a reference to the dom element targeted for manipulation and data to update the DOM with. 
+The callback takes two parameters, the first being a reference to the dom element targeted for manipulation and the second being the data to update the DOM with. 
 
 ```javascript
-const d3Callback = (ref: SVGElement, data: number[]): void => {
+
+const d3Callback = (ref, data) => {
   const svg = d3.select(ref);
 
   // Bind D3 data
@@ -55,11 +57,8 @@ const d3Callback = (ref: SVGElement, data: number[]): void => {
 
 The callback is passed to the D3Svg component like so:
 ```typescript
-interface VizProps {
-  data: number[];
-}
 
-const Viz = (props: VizProps): JSX.Element  => 
+const Viz = ({d3Callback, data}): JSX.Element  => 
   <D3Svg
    width={200}
    height={50}
@@ -82,7 +81,7 @@ Pretty sweet!
 
 
 ## Issues
-If you find a bug or want to an enhancement please open a PR.
+If you find a bug or want to suggest an enhancement please feel free to open a PR.
 
 :)
 
