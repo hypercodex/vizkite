@@ -8,6 +8,14 @@ You want to use a stateful DOM manipulation library like D3 within React. You wa
 This package uses a combination of useRef and useEffect closed on by a HOC for a component that returns a SVGElement. The svg is rendered in React and can be manipulated by passing a callback that uses a library such as D3 to perform DOM mutations.
 
 ### Installation
+This package is hosted on Gihub Packages. Because yarn and npm only allow one owner or organization by default to install this package, you will need to add the following line to your `~/.npmrc` file. 
+
+`@hypercodex:registry=https://npm.pkg.github.com`
+
+This change allows for packages under the @hypercodex namespace to be routed to the package service on Github instead of NPM. 
+
+Then you should be able to run:
+
 `yarn add "@hypercodex/vizkite"`
 
 ### Examples
