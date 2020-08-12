@@ -55,21 +55,21 @@ const d3Callback = (ref, data) => {
 }
 ```
 
-The callback is passed to the D3Svg component like so:
+The callback can be passed to the D3Svg component with our custom component `Viz` like so:
 ```typescript
 
-const Viz = ({d3Callback, data}): JSX.Element  => 
+const Viz = ({d3Callback, data}) => 
   <D3Svg
    width={200}
    height={50}
    className='test'
    d3Callback={d3Callback}
-   data={props.data}
+   data={data}
   />;
 
 ...
 
-ReactDOM.render(<Viz data={[1, 2, 3, 4]} />, document.getElementById('root'));
+ReactDOM.render(<Viz d3Callback={d3Callback} data={[1, 2, 3, 4]} />, document.getElementById('root'));
 ```
 
 #### Renders: 
