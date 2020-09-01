@@ -27,8 +27,8 @@ export const useD3: D3HookFunction = (d3Callback, data) => {
     d3Callback(ref.current, data);
 
     return () => {
-      if (ref.current) {  
-        ref.current.querySelector('svg').remove();
+      if (ref.current && ref.current.firstChild) {  
+        ref.current.firstChild.remove();
       }
     }
   }, [data, ref.current]);
