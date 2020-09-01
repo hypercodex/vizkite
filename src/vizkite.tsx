@@ -2,72 +2,74 @@ import React, { useRef, useEffect } from 'react'
 
 
 
-export type SVGRef = React.MutableRefObject<SVGSVGElement>
+export type TargetRef = React.MutableRefObject<HTMLDivElement>
 
 export type D3CallbackDataParameter = any[];
 
+
 export interface D3CallbackType {
-  (ref: SVGSVGElement, data: D3CallbackDataParameter): void;
+  (ref: HTMLDivElement, data: D3CallbackDataParameter): void;
 }
+
 
 export interface D3HookFunction {
   (
     d3Callback: D3CallbackType,
     data: D3CallbackDataParameter
-  ): SVGRef | null;
+  ): React.MutableRefObject<HTMLDivElement>;
 }
 
 
 export const useD3: D3HookFunction = (d3Callback, data) => {
   
-  const ref = useRef(null) as React.MutableRefObject<SVGSVGElement>;
+  const ref = useRef(null) as React.MutableRefObject<HTMLDivElement>;
   useEffect(() => {
     d3Callback(ref.current, data);
-  }, [data]);
+
+    return () => {
+      if (ref.current && ref.current.firstChild) {  
+        ref.current.firstChild.remove();
+      }
+    }
+  }, [data, ref.current]);
 
   return ref
 }
 
 
 
-export interface D3SvgTargetBaseProps {
+export interface D3TargetBaseProps {
   className: string;
-  width: number;
-  height: number;
 }
 
-export interface D3SvgTargetProps extends D3SvgTargetBaseProps { 
-  forwardRef: SVGRef;
+export interface D3TargetProps extends D3TargetBaseProps { 
+  forwardRef: TargetRef;
 }
 
-export const D3SvgTarget = (props: D3SvgTargetProps): JSX.Element => (
-    <svg 
-      className={props.className}
-      width={props.width}
-      height={props.height}
-      ref={props.forwardRef}
-    />
+
+export const D3Target = (props: D3TargetProps): JSX.Element => (
+    <div className={props.className} ref={props.forwardRef} ></div>
 );
 
 
-export interface D3SvgProps extends D3SvgTargetBaseProps {
+export interface D3Props extends D3TargetBaseProps {
   d3Callback: D3CallbackType;
   data: D3CallbackDataParameter;
 }
 
-export const D3Svg = (props: D3SvgProps): JSX.Element => {
+export const D3Container = (props: D3Props): JSX.Element => {
   const { 
     d3Callback,
     data,
-    className,
-    width,
-    height 
   } = props;
 
   const forwardRef = useD3(d3Callback, data);
 
   return (
-      <D3SvgTarget {...{...props, forwardRef: forwardRef}} /> 
+      <D3Target {...{...props, forwardRef: forwardRef}} /> 
   );
 }
+
+
+
 
