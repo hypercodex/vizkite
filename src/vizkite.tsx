@@ -16,6 +16,7 @@ export interface D3Callback {
 export interface D3HookFunction {
   <D, O>(
     d3Callback: D3CallbackSignature<D, O>,
+
     data: D,
     options?: O
   ): TargetRef;
