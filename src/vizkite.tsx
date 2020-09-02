@@ -5,14 +5,17 @@ import React, { useRef, useEffect } from 'react'
 export type TargetRef = React.MutableRefObject<HTMLDivElement>
 
 
-
-export interface D3CallbackFunc<D, O> {
+export interface D3CallbackSignature<D, O> {
   (ref: HTMLDivElement, data: D, options?: O): void;
+}
+
+export interface D3Callback {
+  <D, O>(ref: HTMLDivElement, data: D, options?: O): void;
 }
 
 export interface D3HookFunction {
   <D, O>(
-    d3Callback: D3CallbackFunc<D, O>,
+    d3Callback: D3CallbackSignature<D, O>,
     data: D,
     options?: O
   ): TargetRef;
@@ -52,7 +55,7 @@ export const D3Target = (props: D3TargetProps): JSX.Element => (
 
 
 interface D3ContainerProps<D, O> extends D3TargetBaseProps {
-  d3Callback: D3CallbackFunc<D, O>;
+  d3Callback: D3CallbackSignature<D, O>;
   data: D;
   options?: O;
 }
