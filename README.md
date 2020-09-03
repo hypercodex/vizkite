@@ -23,14 +23,14 @@ This module exports a React component `D3Svg` that will render a `<svg ... />` t
 The callback has the following signature:
 
 ```typescript
-export interface D3CallbackType {
-  (ref: React.MutableRefObject<HTMLDivElement>, data: any[]): void;
+export interface D3CallbackSignature<D, O> {
+  (ref: HTMLDivElement, data: D, options?: O): void;
 }
 ```
 
 #### An example using a simple D3 callback:
 
-The callback takes two parameters, the first being a reference to the dom element targeted for manipulation and the second being the data to update the DOM with. 
+The callback takes two required parameters, the first being a reference to the dom element targeted for manipulation and the second being the data to update the DOM with. An optional options parameter can be passed through to the callback. 
 
 ```javascript
 
@@ -63,13 +63,13 @@ const d3Callback = (ref, data) => {
 }
 ```
 
-The callback can be passed to the D3Svg component with our custom component `Viz` like so:
+The callback can be passed to the D3Svg component with our custom component `Viz` like so (_note the required casting of the callback prop on the component_):
 ```typescript
 
 const Viz = ({d3Callback, data}) => 
   <D3Container
    className='test'
-   d3Callback={d3Callback}
+   d3Callback={d3Callback as D3Callback}
    data={data}
   />;
 
