@@ -41,6 +41,7 @@ export const useD3: D3HookFunction = (d3Callback, data, options) => {
 
 
 export interface D3TargetBaseProps {
+  id: string;
   className?: string;
 }
 
@@ -50,7 +51,7 @@ export interface D3TargetProps extends D3TargetBaseProps {
 
 
 export const D3Target = (props: D3TargetProps): JSX.Element => (
-    <div className={props.className} ref={props.forwardRef} ></div>
+    <div id={props.id} className={props.className} ref={props.forwardRef} ></div>
 );
 
 
@@ -64,6 +65,7 @@ export const D3Container = <T, O, P extends D3ContainerProps<T, O>>(props: P): J
   const { 
     d3Callback,
     data,
+    id,
     options
   } = props;
 
