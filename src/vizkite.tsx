@@ -1,5 +1,6 @@
 import React, { useRef, useLayoutEffect, useState } from 'react'
 import useComponentSize from '@rehooks/component-size'
+import 'resize-observer-polyfill'
 
 
 
