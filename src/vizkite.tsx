@@ -4,27 +4,29 @@ import React, { useRef, useEffect } from 'react'
 
 export type TargetRef = React.MutableRefObject<HTMLDivElement>
 
-export type D3CallbackDataParameter = any[];
 
-
-export interface D3CallbackType {
-  (ref: HTMLDivElement, data: D3CallbackDataParameter): void;
+export interface D3CallbackSignature<D, O> {
+  (ref: HTMLDivElement, data: D, options?: O): void;
 }
 
+export interface D3Callback {
+  <D, O>(ref: HTMLDivElement, data: D, options?: O): void;
+}
 
 export interface D3HookFunction {
-  (
-    d3Callback: D3CallbackType,
-    data: D3CallbackDataParameter
-  ): React.MutableRefObject<HTMLDivElement>;
+  <D, O>(
+    d3Callback: D3CallbackSignature<D, O>,
+    data: D,
+    options?: O
+  ): TargetRef;
 }
 
 
-export const useD3: D3HookFunction = (d3Callback, data) => {
+export const useD3: D3HookFunction = (d3Callback, data, options) => {
   
-  const ref = useRef(null) as React.MutableRefObject<HTMLDivElement>;
+  const ref = useRef(null) as TargetRef;
   useEffect(() => {
-    d3Callback(ref.current, data);
+    d3Callback(ref.current, data, options);
 
     return () => {
       if (ref.current && ref.current.firstChild) {  
@@ -39,7 +41,8 @@ export const useD3: D3HookFunction = (d3Callback, data) => {
 
 
 export interface D3TargetBaseProps {
-  className: string;
+  id: string;
+  className?: string;
 }
 
 export interface D3TargetProps extends D3TargetBaseProps { 
@@ -48,28 +51,27 @@ export interface D3TargetProps extends D3TargetBaseProps {
 
 
 export const D3Target = (props: D3TargetProps): JSX.Element => (
-    <div className={props.className} ref={props.forwardRef} ></div>
+    <div id={props.id} className={props.className} ref={props.forwardRef} ></div>
 );
 
 
-export interface D3Props extends D3TargetBaseProps {
-  d3Callback: D3CallbackType;
-  data: D3CallbackDataParameter;
+interface D3ContainerProps<D, O> extends D3TargetBaseProps {
+  d3Callback: D3CallbackSignature<D, O>;
+  data: D;
+  options?: O;
 }
 
-export const D3Container = (props: D3Props): JSX.Element => {
+export const D3Container = <T, O, P extends D3ContainerProps<T, O>>(props: P): JSX.Element => {
   const { 
     d3Callback,
     data,
+    id,
+    options
   } = props;
 
-  const forwardRef = useD3(d3Callback, data);
+  const forwardRef = useD3(d3Callback, data, options);
 
   return (
-      <D3Target {...{...props, forwardRef: forwardRef}} /> 
+      <D3Target {...{...props as P, forwardRef: forwardRef}} /> 
   );
 }
-
-
-
-
