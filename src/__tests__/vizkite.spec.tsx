@@ -27,7 +27,7 @@ describe("Test units of custom hook", () => {
     const d3Callback = (ref, data) => {
       if (ref !== null) {
         const childNode = document.createElementNS(xmlns, 'circle')
-        ref.appendChild(childNode);
+        ref.current.appendChild(childNode);
       }
     };
     const svg = mount(<D3Container id='test' className='test' d3Callback={d3Callback} data={[1, 2, 3]}/>);
