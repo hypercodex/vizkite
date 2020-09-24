@@ -63,7 +63,7 @@ const d3Callback = (ref, data) => {
 }
 ```
 
-The callback can be passed to the D3Svg component with our custom component `Viz` like so (_note the required casting of the callback prop on the component_):
+The callback can be passed to the D3Container component the example `Viz` component like so (_note the required casting of the callback prop on the component_):
 ```typescript
 
 const Viz = ({d3Callback, data}) => 
