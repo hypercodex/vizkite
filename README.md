@@ -2,10 +2,10 @@
 Visualization package leveraging React Hooks to run DOM manipulation side-effects such as D3.
 
 ### Why
-You want to use a stateful DOM manipulation library like D3 within React. You want to do this using the Hooks approach. You want to avoid having the boilerplate of extracting the stateful logic into a custom Hook everytime you want to render a data driven document. You want this functionality to be modular and in Typescript.
+You want to use a stateful DOM manipulation library like D3 within React. You want to do this using the Hooks approach. You want to avoid having the boilerplate of extracting the logic into a custom Hook everytime you want to render a data driven document. You want this functionality to be modular and in Typescript.
 
 ### How
-This package uses a combination of useRef and useEffect closed on by a HOC for a component that returns a SVGElement. The target DOM element is rendered in React and can be manipulated by passing a callback that uses a library such as D3 to perform DOM mutations.
+This package uses a combination of useRef and useLayoutEffect, closed on by a component that returns a container `HTMLDivElement`. The target DOM element is rendered in React and can be targeted as the root selection by passing a callback that uses a library such as D3 to perform DOM mutations.
 
 ### Installation
 This package is hosted on Gihub Packages. Because yarn and npm only allow one owner or organization by default to install this package, you will need to add the following line to your `~/.npmrc` file. 
