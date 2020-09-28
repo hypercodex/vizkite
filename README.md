@@ -1,4 +1,4 @@
-# VisKite
+# VizKite
 [![Actions Status](https://github.com/hypercodex/vizkite/workflows/CI/badge.svg)](https://github.com/hypercodex/vizkite/actions)
 [![Coverage Status](https://coveralls.io/repos/github/hypercodex/vizkite/badge.svg?branch=master)](https://coveralls.io/github/hypercodex/vizkite?branch=master)
 [![license](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
