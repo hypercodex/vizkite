@@ -1,4 +1,6 @@
 # VisKite
+[![Coverage Status](https://coveralls.io/repos/github/hypercodex/vizkite/badge.svg?branch=master)](https://coveralls.io/github/hypercodex/vizkite?branch=master)
+
 Visualization package leveraging React Hooks to run DOM manipulation side-effects such as D3.
 
 ### Why
