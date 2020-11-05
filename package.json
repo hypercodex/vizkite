@@ -42,11 +42,13 @@
     "eslint-plugin-react-hooks": "^4.0.8",
     "jest": "^26.2.2",
     "jest-dom": "^4.0.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
     "ts-jest": "^26.1.4",
     "typescript": "^3.9.7"
   },
-  "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+  "peerDependencies": {
+    "react": ">=16.13.1",
+    "react-dom": ">=16.13.1"
   }
 }
